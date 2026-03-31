@@ -7,7 +7,7 @@
 size = Vector2(32, 6)
 
 [node name="Paddle" type="StaticBody2D" unique_id=134708023]
-collision_layer = 2
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_y7wee")
 

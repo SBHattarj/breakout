@@ -1,4 +1,6 @@
 extends StaticBody2D
+class_name Paddle
+
 var PADDLE_OFFSET = 50
 var direction = Vector2.ZERO
 var rotation_offset = 0

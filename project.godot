@@ -48,6 +48,13 @@ test={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="all"
+2d_physics/layer_2="player"
+2d_physics/layer_3="paddle"
+2d_physics/layer_4="enemy"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

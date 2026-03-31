@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bdy6eolr4pi1t" path="res://scenes/player.tscn" id="1_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://8h2bpjwkeg06" path="res://assets/sprites/background.png" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://lwg5yn8g5eat" path="res://scenes/tile_map_layer.gd" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://bq6nmolqk4p5x" path="res://scripts/enemy_spawner.gd" id="5_p57ef"]
+[ext_resource type="PackedScene" uid="uid://bscxbtdgyfkda" path="res://scenes/enemy1.tscn" id="6_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -24,3 +26,14 @@ z_index = -100
 tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAADAAAAAAAAAAAAAAADAPz/AAAAAAAAAAD///z/AAAAAAAAAAD7//z/AAAAAAAAAAD7/wAAAAAAAAAAAAD7/wQAAAAAAAAAAAD//wQAAAAAAAAAAAADAAQAAAAAAAAAAAAHAPz/AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAQAAAAAAAAAAAALAPz/AAAAAAAAAAALAAAAAAAAAAAAAAALAAQAAAAAAAAAAAAPAPz/AAAAAAAAAAAPAAAAAAAAAAAAAAAPAAQAAAAAAAAAAADv//z/AAAAAAAAAADv/wAAAAAAAAAAAADv/wQAAAAAAAAAAADz//z/AAAAAAAAAADz/wAAAAAAAAAAAADz/wQAAAAAAAAAAAD3//z/AAAAAAAAAAD3/wAAAAAAAAAAAAD3/wQAAAAAAAAAAADv//D/AAAAAAAAAADv//T/AAAAAAAAAADv//j/AAAAAAAAAADz//D/AAAAAAAAAADz//T/AAAAAAAAAADz//j/AAAAAAAAAAD3//D/AAAAAAAAAAD3//T/AAAAAAAAAAD3//j/AAAAAAAAAAD7//D/AAAAAAAAAAD7//T/AAAAAAAAAAD7//j/AAAAAAAAAAD///D/AAAAAAAAAAD///T/AAAAAAAAAAD///j/AAAAAAAAAAADAPD/AAAAAAAAAAADAPT/AAAAAAAAAAADAPj/AAAAAAAAAAAHAPD/AAAAAAAAAAAHAPT/AAAAAAAAAAAHAPj/AAAAAAAAAAALAPD/AAAAAAAAAAALAPT/AAAAAAAAAAALAPj/AAAAAAAAAAAPAPD/AAAAAAAAAAAPAPT/AAAAAAAAAAAPAPj/AAAAAAAAAADv/wgAAAAAAAAAAADv/wwAAAAAAAAAAADv/xAAAAAAAAAAAADz/wgAAAAAAAAAAADz/wwAAAAAAAAAAADz/xAAAAAAAAAAAAD3/wgAAAAAAAAAAAD3/wwAAAAAAAAAAAD3/xAAAAAAAAAAAAD7/wgAAAAAAAAAAAD7/wwAAAAAAAAAAAD7/xAAAAAAAAAAAAD//wgAAAAAAAAAAAD//wwAAAAAAAAAAAD//xAAAAAAAAAAAAADAAgAAAAAAAAAAAADAAwAAAAAAAAAAAADABAAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAwAAAAAAAAAAAAHABAAAAAAAAAAAAALAAgAAAAAAAAAAAALAAwAAAAAAAAAAAALABAAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAwAAAAAAAAAAAAPABAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_lbhrr")
 script = ExtResource("3_lnu2h")
+
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=1712329429 node_paths=PackedStringArray("player")]
+script = ExtResource("5_p57ef")
+enemy_scenes = Array[PackedScene]([ExtResource("6_u5sy4")])
+player = NodePath("../Player")
+enemy_distance = 350.0
+
+[node name="Timer" type="Timer" parent="EnemySpawner" unique_id=1148009464]
+autostart = true
+
+[connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="spawn_enemy"]

@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 var direction: Vector2
 const acceleration = 2000
@@ -9,12 +10,24 @@ var paddle_scene = preload("res://scenes/paddle.tscn")
 var paddles = []
 var paddle_count = 0
 var direction_deg = 0
+
+@export
+var max_hp := 3
+
+var hp := 3
+
+var paddle_distance: int:
+	get():
+		return 28 + (paddle_count * 4 )
 # initializes speed and direction
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 const diagonal_speed = 0.707
 const friction = 0.8
+
+func _ready() -> void:
+	hp = max_hp
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2(speed_x, speed_y)
@@ -52,7 +65,7 @@ func animation():
 			sprite.animation = "idle_down" if player_lastdir.y < 0 else "idle_up"
 
 func set_paddle_count(count):
-	var paddle_count = count
+	paddle_count = count
 	for i in paddles:
 		i.queue_free()
 	paddles.clear()

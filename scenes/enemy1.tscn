@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bscxbtdgyfkda"]
+
+[ext_resource type="Script" uid="uid://crh63v8xnm0fu" path="res://scripts/enemy.gd" id="1_ppmo8"]
+[ext_resource type="PackedScene" uid="uid://bwthlo64pi2gx" path="res://scenes/ball.tscn" id="2_nb0t0"]
+[ext_resource type="Texture2D" uid="uid://dh0tparwyrvpk" path="res://assets/sprites/enemies.png" id="3_n665k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nb0t0"]
+size = Vector2(16, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lowyn"]
+atlas = ExtResource("3_n665k")
+region = Rect2(0, 72, 38, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iolyx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lowyn")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Enemy1" type="CharacterBody2D" unique_id=1953095817]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_ppmo8")
+speed = 50.0
+ball_scene = ExtResource("2_nb0t0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=63387823]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_nb0t0")
+
+[node name="Timer" type="Timer" parent="." unique_id=1492343259]
+wait_time = 10.0
+autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=303437695]
+rotation = -1.5707964
+sprite_frames = SubResource("SpriteFrames_iolyx")
+animation = &"new_animation"
+
+[connection signal="timeout" from="Timer" to="." method="throw_ball"]

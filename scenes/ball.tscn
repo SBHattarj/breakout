@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bwthlo64pi2gx"]
+
+[ext_resource type="Script" uid="uid://d2r0enbwmkfwb" path="res://scripts/ball.gd" id="1_7s4qf"]
+[ext_resource type="Texture2D" uid="uid://cfcrbfejlramk" path="res://assets/sprites/breakout_balls.png" id="2_cxlvu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cxlvu"]
+radius = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxlvu"]
+atlas = ExtResource("2_cxlvu")
+region = Rect2(6, 0, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7cbr"]
+atlas = ExtResource("2_cxlvu")
+region = Rect2(0, 0, 6, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4dx81"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxlvu")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7cbr")
+}],
+"loop": true,
+"name": &"white",
+"speed": 5.0
+}]
+
+[node name="Ball" type="CharacterBody2D" unique_id=160550777 node_paths=PackedStringArray("visible_on_screen_notifiers", "sprite")]
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("1_7s4qf")
+enemy_collison_layer = 8
+player_collison_layer = 2
+paddle_collison_layer = 4
+visible_on_screen_notifiers = [NodePath("VisibleOnScreenNotifier2DUp"), NodePath("VisibleOnScreenNotifier2D2Down"), NodePath("VisibleOnScreenNotifier2D3Left"), NodePath("VisibleOnScreenNotifier2D4Right")]
+sprite = NodePath("AnimatedSprite2D")
+speed = 75.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1961838284]
+shape = SubResource("CircleShape2D_cxlvu")
+
+[node name="VisibleOnScreenNotifier2DUp" type="VisibleOnScreenNotifier2D" parent="." unique_id=1642403762]
+position = Vector2(0, -7)
+rect = Rect2(-3, -3, 6, 6)
+
+[node name="VisibleOnScreenNotifier2D2Down" type="VisibleOnScreenNotifier2D" parent="." unique_id=114560866]
+position = Vector2(0, 7)
+rect = Rect2(-3, -3, 6, 6)
+
+[node name="VisibleOnScreenNotifier2D3Left" type="VisibleOnScreenNotifier2D" parent="." unique_id=1065659824]
+position = Vector2(-7, 0)
+rect = Rect2(-3, -3, 6, 6)
+
+[node name="VisibleOnScreenNotifier2D4Right" type="VisibleOnScreenNotifier2D" parent="." unique_id=889858748]
+position = Vector2(7, 0)
+rect = Rect2(-3, -3, 6, 6)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=488856381]
+sprite_frames = SubResource("SpriteFrames_4dx81")
+animation = &"blue"
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2DUp" to="." method="collide_top_screen"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D2Down" to="." method="collide_bottom_screen"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D3Left" to="." method="collide_left_screen"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D4Right" to="." method="collide_right_screen"]
