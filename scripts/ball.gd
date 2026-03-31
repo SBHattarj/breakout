@@ -80,9 +80,9 @@ func _physics_process(delta: float) -> void:
 			var collison_body := collison.get_collider()
 			var collison_normal := collison.get_normal()
 			if _handle_player(collison_body):
-				continue
+				return
 			if _handle_enemy(collison_body):
-				continue
+				return
 			if collison_body is Paddle:
 				if collison_type == BallCollideType.ENEMY:
 					collison_type = BallCollideType.PLAYER

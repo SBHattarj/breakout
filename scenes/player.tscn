@@ -238,6 +238,7 @@ collision_layer = 2
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_g2els")
+exp_growth_offset = 8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1423520432]
 sprite_frames = SubResource("SpriteFrames_fulsm")

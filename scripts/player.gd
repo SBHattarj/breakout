@@ -12,9 +12,38 @@ var paddle_count = 0
 var direction_deg = 0
 
 @export
-var max_hp := 3
+var max_hp := 3:
+	set(val):
+		max_hp = val
+		Signals.total_hp_changed(max_hp)
 
-var hp := 3
+var hp := 3:
+	set(val):
+		hp = val
+		Signals.current_hp_changed(hp)
+
+@export
+var exp_growth_rate := 2
+@export
+var exp_growth_offset := 10
+
+@export
+var level: int = 1:
+	set(val):
+		level = val
+		Signals.total_exp_changed(exp_for_level_up)
+
+var current_exp: int = 0:
+	set(val):
+		while val > exp_for_level_up:
+			val -= exp_for_level_up
+			level += 1
+		current_exp = val
+		Signals.current_exp_changed(current_exp)
+		
+var exp_for_level_up: int:
+	get():
+		return floor(exp_growth_rate*exp(level-1)+exp_growth_offset)
 
 var paddle_distance: int:
 	get():
@@ -28,6 +57,14 @@ const friction = 0.8
 
 func _ready() -> void:
 	hp = max_hp
+	Signals.update_score_signal.connect(exp_changed)
+	Signals.total_exp_changed.call_deferred(exp_for_level_up)
+	Signals.current_exp_changed.call_deferred(current_exp)
+	Signals.total_hp_changed.call_deferred(max_hp)
+	Signals.current_hp_changed.call_deferred(hp)
+
+func exp_changed(by: int):
+	current_exp += by
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2(speed_x, speed_y)

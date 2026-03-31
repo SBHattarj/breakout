@@ -14,3 +14,7 @@ res://scripts/player_coin_collerctor.gd
 res://scenes/coin.tscn
 res://scripts/signals.gd
 res://scripts/score.gd
+res://scenes/health_bar.tscn
+res://scripts/bar.gd
+res://scenes/player_hud.tscn
+res://scripts/hub.gd

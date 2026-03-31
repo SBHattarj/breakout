@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://bq6nmolqk4p5x" path="res://scripts/enemy_spawner.gd" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://bscxbtdgyfkda" path="res://scenes/enemy1.tscn" id="6_u5sy4"]
 [ext_resource type="Script" uid="uid://5k6xr5pyucio" path="res://scripts/score.gd" id="7_u5sy4"]
+[ext_resource type="Theme" uid="uid://cp5ak33074086" path="res://scenes/ui_theme.tres" id="8_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://dkr6kvwqa0wk7" path="res://scenes/player_hud.tscn" id="9_vtaks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -15,9 +17,6 @@ texture = ExtResource("2_yqjtg")
 
 [sub_resource type="TileSet" id="TileSet_lbhrr"]
 sources/0 = SubResource("TileSetAtlasSource_lnu2h")
-
-[sub_resource type="Theme" id="Theme_u5sy4"]
-Label/font_sizes/font_size = 64
 
 [node name="Game" type="Node2D" unique_id=797236896]
 script = ExtResource("1_lbhrr")
@@ -39,6 +38,7 @@ enemy_distance = 350.0
 additional_spawn_location = NodePath("../AdditionalSpawnLocation")
 
 [node name="Timer" type="Timer" parent="EnemySpawner" unique_id=1148009464]
+wait_time = 2.5
 autostart = true
 
 [node name="AdditionalSpawnLocation" type="Node2D" parent="." unique_id=1523680823]
@@ -50,9 +50,12 @@ score_label = NodePath("HBoxContainer/ScoreLabel")
 [node name="HBoxContainer" type="HBoxContainer" parent="Score" unique_id=428673576]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 23.0
+offset_left = 1.0
+offset_top = 71.0
+offset_right = 1.0
+offset_bottom = 135.0
 grow_horizontal = 2
-theme = SubResource("Theme_u5sy4")
+theme = ExtResource("8_0tnpc")
 
 [node name="ScoreIdentifierText" type="Label" parent="Score/HBoxContainer" unique_id=477459559]
 layout_mode = 2
@@ -61,5 +64,7 @@ text = "Score: "
 [node name="ScoreLabel" type="Label" parent="Score/HBoxContainer" unique_id=172085875]
 layout_mode = 2
 text = "0"
+
+[node name="PlayerHUD" parent="." unique_id=286748998 instance=ExtResource("9_vtaks")]
 
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="spawn_enemy"]

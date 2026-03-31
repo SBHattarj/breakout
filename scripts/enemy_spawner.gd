@@ -18,11 +18,14 @@ var max_enemies := 10
 @export
 var additional_spawn_location: Node2D
 
+func _ready() -> void:
+	spawn_enemy.call_deferred()
+
 func spawn_enemy():
 	if player == null:
 		return
-	if get_child_count() >= max_enemies:
-		return
+	#if get_child_count() >= max_enemies:
+		#return
 	var enemy_position_relative := Vector2.from_angle(randf_range(0, 2*PI)) * enemy_distance
 	var enemy_position :=  player.global_position + enemy_position_relative
 	var new_enemy: Enemy = enemy_scenes[enemy_level].instantiate()

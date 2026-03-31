@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://dkr6kvwqa0wk7"]
+
+[ext_resource type="Script" uid="uid://cang26r2fdv1b" path="res://scripts/hub.gd" id="1_lqhkl"]
+[ext_resource type="Texture2D" uid="uid://bedhtbdj4nxo7" path="res://assets/sprites/heart.png" id="1_s25gh"]
+[ext_resource type="Texture2D" uid="uid://4gguer67ua77" path="res://assets/sprites/xp.png" id="2_ujnyd"]
+[ext_resource type="Theme" uid="uid://cp5ak33074086" path="res://scenes/ui_theme.tres" id="3_lqhkl"]
+[ext_resource type="Texture2D" uid="uid://f0rhmjfulvnv" path="res://assets/sprites/full_bars.png" id="4_8y7rk"]
+[ext_resource type="Script" uid="uid://c2777dvedaife" path="res://scripts/bar.gd" id="4_ujnyd"]
+[ext_resource type="Texture2D" uid="uid://cyrua4ddoumbu" path="res://assets/sprites/health_bar.png" id="5_50hf8"]
+[ext_resource type="Texture2D" uid="uid://pb0qngk1406f" path="res://assets/sprites/xp_bar.png" id="6_mta0a"]
+
+[node name="PlayerHUD" type="CanvasLayer" unique_id=286748998 node_paths=PackedStringArray("hp_bar", "exp_bar")]
+script = ExtResource("1_lqhkl")
+hp_bar = NodePath("HealthBar")
+exp_bar = NodePath("EXPBar")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1486292200]
+offset_left = 22.0
+offset_top = 591.0
+offset_right = 62.0
+offset_bottom = 631.0
+texture = ExtResource("1_s25gh")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=286370465]
+offset_left = 25.0
+offset_top = 17.0
+offset_right = 65.0
+offset_bottom = 57.0
+texture = ExtResource("2_ujnyd")
+
+[node name="HealthBar" type="Control" parent="." unique_id=1052417387 node_paths=PackedStringArray("base_bar", "display_bar", "current_display", "total_display")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("3_lqhkl")
+script = ExtResource("4_ujnyd")
+base_bar = NodePath("Background")
+display_bar = NodePath("Main")
+current_display = NodePath("CenterContainer/HBoxContainer/CurrentHP")
+total_display = NodePath("CenterContainer/HBoxContainer/TotalHP")
+total = 10
+current = 5
+
+[node name="Background" type="NinePatchRect" parent="HealthBar" unique_id=417124972]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 585.0
+offset_right = 197.0
+offset_bottom = 609.0
+scale = Vector2(2, 2)
+texture = ExtResource("4_8y7rk")
+region_rect = Rect2(0, 28, 64, 14)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Main" type="NinePatchRect" parent="HealthBar" unique_id=1980848855]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 585.0
+offset_right = 133.0
+offset_bottom = 609.0
+scale = Vector2(2, 2)
+texture = ExtResource("5_50hf8")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HealthBar" unique_id=691074406]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 585.0
+offset_right = 325.0
+offset_bottom = 633.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HealthBar/CenterContainer" unique_id=1678399921]
+layout_mode = 2
+
+[node name="CurrentHP" type="Label" parent="HealthBar/CenterContainer/HBoxContainer" unique_id=1389463779]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "5"
+
+[node name="Slash" type="Label" parent="HealthBar/CenterContainer/HBoxContainer" unique_id=290625831]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "/"
+
+[node name="TotalHP" type="Label" parent="HealthBar/CenterContainer/HBoxContainer" unique_id=368349918]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "10"
+
+[node name="EXPBar" type="Control" parent="." unique_id=500174409 node_paths=PackedStringArray("base_bar", "display_bar", "current_display", "total_display")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("3_lqhkl")
+script = ExtResource("4_ujnyd")
+base_bar = NodePath("Background")
+display_bar = NodePath("Main")
+current_display = NodePath("CenterContainer/HBoxContainer2/CurrentHP")
+total_display = NodePath("CenterContainer/HBoxContainer2/TotalHP")
+total = 10
+current = 5
+
+[node name="Background" type="NinePatchRect" parent="EXPBar" unique_id=940108284]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 11.0
+offset_right = 588.0
+offset_bottom = 35.0
+scale = Vector2(2, 2)
+texture = ExtResource("4_8y7rk")
+region_rect = Rect2(0, 28, 64, 14)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Main" type="NinePatchRect" parent="EXPBar" unique_id=1938077775]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 48.0
+offset_top = 11.0
+offset_right = 308.0
+offset_bottom = 35.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+texture = ExtResource("6_mta0a")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="EXPBar" unique_id=206114795]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 11.0
+offset_right = 1108.0
+offset_bottom = 59.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="EXPBar/CenterContainer" unique_id=1746756924]
+layout_mode = 2
+
+[node name="CurrentHP" type="Label" parent="EXPBar/CenterContainer/HBoxContainer2" unique_id=1485681633]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "5"
+
+[node name="Slash" type="Label" parent="EXPBar/CenterContainer/HBoxContainer2" unique_id=2080752055]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "/"
+
+[node name="TotalHP" type="Label" parent="EXPBar/CenterContainer/HBoxContainer2" unique_id=1111649347]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "10"

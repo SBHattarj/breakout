@@ -85,6 +85,7 @@ func throw_ball():
 
 
 func die():
+	if is_queued_for_deletion(): return
 	var coin: Coin = coin_scene.instantiate()
 	additionals_spawn_location.add_child(coin)
 	coin.global_position = global_position
