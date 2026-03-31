@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bwnktrydo637c" path="res://assets/sprites/player_spritesheet.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dhegsqg0yecuw" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://x6m12vb6pxwp" path="res://scripts/player_coin_collerctor.gd" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
 atlas = ExtResource("1_3vyb7")
@@ -218,6 +219,20 @@ animations = [{
 radius = 4.0
 height = 16.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
+radius = 50.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qhqgy"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dqkch"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qlg0r"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tuyoq"]
+normal = Vector2(-1, 0)
+
 [node name="Player" type="CharacterBody2D" unique_id=785835481]
 collision_layer = 2
 collision_mask = 0
@@ -237,3 +252,35 @@ shape = SubResource("CapsuleShape2D_4r5pv")
 position = Vector2(-1, 0)
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1833854755 node_paths=PackedStringArray("player")]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("3_qhqgy")
+player = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=91322234]
+shape = SubResource("CircleShape2D_dqkch")
+
+[node name="Boundary" type="StaticBody2D" parent="." unique_id=289924904]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary" unique_id=1017489605]
+position = Vector2(0, 151)
+shape = SubResource("WorldBoundaryShape2D_qhqgy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary" unique_id=957147811]
+position = Vector2(0, -150)
+shape = SubResource("WorldBoundaryShape2D_dqkch")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundary" unique_id=40863684]
+position = Vector2(-235, 0)
+shape = SubResource("WorldBoundaryShape2D_qlg0r")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundary" unique_id=1620769664]
+position = Vector2(233, 0)
+shape = SubResource("WorldBoundaryShape2D_tuyoq")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

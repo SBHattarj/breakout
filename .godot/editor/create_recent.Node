@@ -1,6 +1,11 @@
-AnimatedSprite2D
-Timer
-VisibleOnScreenNotifier2D
+Label
+HBoxContainer
+CanvasLayer
 CollisionShape2D
+StaticBody2D
+Area2D
+AnimatedSprite2D
 CharacterBody2D
 Node2D
+Timer
+VisibleOnScreenNotifier2D

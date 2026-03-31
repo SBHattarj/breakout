@@ -27,16 +27,21 @@ var enemy_slow_down_distance: float = 25
 @export
 var ball_scene: PackedScene
 @export
-var ball_spawn_location: Node2D
-@export
 var ball_spawn_distance: float = 20
+@export
+var coin_scene: PackedScene
+
+
+@export
+var additionals_spawn_location: Node2D
+
 @export
 var max_hp: int = 1
 var hp := 1:
 	set(val):
 		hp = val
-		if hp == 0:
-			queue_free()
+		if hp != 0: return
+		die()
 
 var rotation_speed: float:
 	get():
@@ -75,5 +80,12 @@ func throw_ball():
 	var ball: Ball = ball_scene.instantiate()
 	ball.direction = ball_direction
 	ball.type = enemy_ball_type_map.get(type)
-	ball_spawn_location.add_child(ball)
+	additionals_spawn_location.add_child(ball)
 	ball.global_position = ball_spawn_position
+
+
+func die():
+	var coin: Coin = coin_scene.instantiate()
+	additionals_spawn_location.add_child(coin)
+	coin.global_position = global_position
+	queue_free()

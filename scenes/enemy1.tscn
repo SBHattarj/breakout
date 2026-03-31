@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://crh63v8xnm0fu" path="res://scripts/enemy.gd" id="1_ppmo8"]
 [ext_resource type="PackedScene" uid="uid://bwthlo64pi2gx" path="res://scenes/ball.tscn" id="2_nb0t0"]
+[ext_resource type="PackedScene" uid="uid://iyqektu06bng" path="res://scenes/coin.tscn" id="3_lowyn"]
 [ext_resource type="Texture2D" uid="uid://dh0tparwyrvpk" path="res://assets/sprites/enemies.png" id="3_n665k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nb0t0"]
@@ -26,8 +27,13 @@ animations = [{
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_ppmo8")
-speed = 50.0
+speed = 60.0
+rotation_speed_deg = 75.0
+enemy_prefered_distance = 50.0
+enemy_slow_down_distance = 20.0
 ball_scene = ExtResource("2_nb0t0")
+ball_spawn_distance = 10.0
+coin_scene = ExtResource("3_lowyn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=63387823]
 position = Vector2(0, -0.5)

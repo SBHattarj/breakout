@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://lwg5yn8g5eat" path="res://scenes/tile_map_layer.gd" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://bq6nmolqk4p5x" path="res://scripts/enemy_spawner.gd" id="5_p57ef"]
 [ext_resource type="PackedScene" uid="uid://bscxbtdgyfkda" path="res://scenes/enemy1.tscn" id="6_u5sy4"]
+[ext_resource type="Script" uid="uid://5k6xr5pyucio" path="res://scripts/score.gd" id="7_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -14,6 +15,9 @@ texture = ExtResource("2_yqjtg")
 
 [sub_resource type="TileSet" id="TileSet_lbhrr"]
 sources/0 = SubResource("TileSetAtlasSource_lnu2h")
+
+[sub_resource type="Theme" id="Theme_u5sy4"]
+Label/font_sizes/font_size = 64
 
 [node name="Game" type="Node2D" unique_id=797236896]
 script = ExtResource("1_lbhrr")
@@ -27,13 +31,35 @@ tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAADAAAAAAAAAAAAAAADAPz/AAAAAAA
 tile_set = SubResource("TileSet_lbhrr")
 script = ExtResource("3_lnu2h")
 
-[node name="EnemySpawner" type="Node2D" parent="." unique_id=1712329429 node_paths=PackedStringArray("player")]
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=1712329429 node_paths=PackedStringArray("player", "additional_spawn_location")]
 script = ExtResource("5_p57ef")
 enemy_scenes = Array[PackedScene]([ExtResource("6_u5sy4")])
 player = NodePath("../Player")
 enemy_distance = 350.0
+additional_spawn_location = NodePath("../AdditionalSpawnLocation")
 
 [node name="Timer" type="Timer" parent="EnemySpawner" unique_id=1148009464]
 autostart = true
+
+[node name="AdditionalSpawnLocation" type="Node2D" parent="." unique_id=1523680823]
+
+[node name="Score" type="CanvasLayer" parent="." unique_id=286976362 node_paths=PackedStringArray("score_label")]
+script = ExtResource("7_u5sy4")
+score_label = NodePath("HBoxContainer/ScoreLabel")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Score" unique_id=428673576]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = SubResource("Theme_u5sy4")
+
+[node name="ScoreIdentifierText" type="Label" parent="Score/HBoxContainer" unique_id=477459559]
+layout_mode = 2
+text = "Score: "
+
+[node name="ScoreLabel" type="Label" parent="Score/HBoxContainer" unique_id=172085875]
+layout_mode = 2
+text = "0"
 
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="spawn_enemy"]

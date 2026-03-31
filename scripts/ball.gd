@@ -83,10 +83,11 @@ func _physics_process(delta: float) -> void:
 				continue
 			if _handle_enemy(collison_body):
 				continue
-			if collison_type == BallCollideType.ENEMY:
-				collison_type = BallCollideType.PLAYER
-			if type != BallType.WHITE:
-				type = BallType.WHITE
+			if collison_body is Paddle:
+				if collison_type == BallCollideType.ENEMY:
+					collison_type = BallCollideType.PLAYER
+				if type != BallType.WHITE:
+					type = BallType.WHITE
 			if is_zero_approx(collison_normal.angle_to(-direction)):
 				direction = -direction
 				return
@@ -126,7 +127,6 @@ func is_fully_out() -> bool:
 func collide_top_screen():
 	if is_fully_out():
 		return
-	print(direction.y)
 	if direction.y > 0:
 		return
 	direction.y = -direction.y

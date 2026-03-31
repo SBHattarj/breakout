@@ -8,3 +8,9 @@ res://scripts/ball.gd
 res://scenes/ball.tscn
 res://scripts/paddle.gd
 res://scenes/player.tscn
+res://scripts/async_utils.gd
+res://scripts/coin.gd
+res://scripts/player_coin_collerctor.gd
+res://scenes/coin.tscn
+res://scripts/signals.gd
+res://scripts/score.gd
