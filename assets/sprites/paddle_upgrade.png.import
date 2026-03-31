@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hkusho4jtjwd"
-path="res://.godot/imported/laser_shot.png-0f38dd37a5148e2b45a66875a1511b8a.ctex"
+uid="uid://srosbx4julml"
+path="res://.godot/imported/paddle_upgrade.png-5987745d61a7bbe27cd00af281b457d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/laser_shot.png"
-dest_files=["res://.godot/imported/laser_shot.png-0f38dd37a5148e2b45a66875a1511b8a.ctex"]
+source_file="res://assets/sprites/paddle_upgrade.png"
+dest_files=["res://.godot/imported/paddle_upgrade.png-5987745d61a7bbe27cd00af281b457d4.ctex"]
 
 [params]
 

@@ -35,7 +35,7 @@ var level: int = 1:
 
 var current_exp: int = 0:
 	set(val):
-		while val > exp_for_level_up:
+		while val >= exp_for_level_up:
 			val -= exp_for_level_up
 			level += 1
 		current_exp = val

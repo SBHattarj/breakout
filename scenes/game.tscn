@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://5k6xr5pyucio" path="res://scripts/score.gd" id="7_u5sy4"]
 [ext_resource type="Theme" uid="uid://cp5ak33074086" path="res://scenes/ui_theme.tres" id="8_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://dkr6kvwqa0wk7" path="res://scenes/player_hud.tscn" id="9_vtaks"]
+[ext_resource type="Script" uid="uid://ixb345cvm2g4" path="res://scripts/bgm_holder.gd" id="10_dinhu"]
+[ext_resource type="AudioStream" uid="uid://cvsdsrv0trvf" path="res://assets/music/Track1.wav" id="11_kvuet"]
+[ext_resource type="Script" uid="uid://dfsy5kwa2kluk" path="res://scripts/bgm_manager.gd" id="12_trtic"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -66,5 +69,18 @@ layout_mode = 2
 text = "0"
 
 [node name="PlayerHUD" parent="." unique_id=286748998 instance=ExtResource("9_vtaks")]
+
+[node name="InitialBGMHolder" type="Node" parent="." unique_id=1619593947]
+script = ExtResource("10_dinhu")
+stream = ExtResource("11_kvuet")
+ease_in = 0.2
+metadata/_custom_type_script = "uid://ixb345cvm2g4"
+
+[node name="Node" type="Node" parent="." unique_id=2050186717]
+script = ExtResource("12_trtic")
+
+[node name="Player1" type="AudioStreamPlayer" parent="Node" unique_id=1179756712]
+
+[node name="Player2" type="AudioStreamPlayer" parent="Node" unique_id=1841216198]
 
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="spawn_enemy"]
