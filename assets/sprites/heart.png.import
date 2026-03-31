@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://catlapuyltblr"
-path="res://.godot/imported/breakout_balls.png-2d9903bee9b12c920c0217545e863016.ctex"
+uid="uid://bedhtbdj4nxo7"
+path="res://.godot/imported/heart.png-d6f3f0a992f76368aa4ea555a1ea3c7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/New Folder With Items/breakout_balls.png"
-dest_files=["res://.godot/imported/breakout_balls.png-2d9903bee9b12c920c0217545e863016.ctex"]
+source_file="res://assets/sprites/New Folder With Items/heart.png"
+dest_files=["res://.godot/imported/heart.png-d6f3f0a992f76368aa4ea555a1ea3c7e.ctex"]
 
 [params]
 
