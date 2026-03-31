@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://fd1f8wikvpqs"
-path="res://.godot/imported/breakout_paddle_circle.png-c1e47ce74bd4b8a512cf5d771919afaf.ctex"
+path="res://.godot/imported/breakout_paddle_circle.png-9c79047b47427dac3c93da54ace1ae5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/breakout_paddle_circle.png"
-dest_files=["res://.godot/imported/breakout_paddle_circle.png-c1e47ce74bd4b8a512cf5d771919afaf.ctex"]
+source_file="res://assets/sprites/New Folder With Items/breakout_paddle_circle.png"
+dest_files=["res://.godot/imported/breakout_paddle_circle.png-9c79047b47427dac3c93da54ace1ae5e.ctex"]
 
 [params]
 
