@@ -23,3 +23,7 @@ func total_exp_changed(value: int):
 
 func current_exp_changed(value: int):
 	exp_bar.current = value
+
+
+func _on_player_game_over() -> void:
+	$Control.visible = true

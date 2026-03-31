@@ -13,7 +13,7 @@ var player: Player
 var enemy_distance := 700.0
 
 @export
-var max_enemies := 10
+var max_enemies := 20
 
 @export
 var additional_spawn_location: Node2D

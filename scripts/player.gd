@@ -10,6 +10,7 @@ var paddle_scene = preload("res://scenes/paddle.tscn")
 var paddles = []
 var paddle_count = 0
 var direction_deg = 0
+signal GAME_OVER
 
 @export
 var max_hp := 3:
@@ -21,6 +22,9 @@ var hp := 3:
 	set(val):
 		hp = val
 		Signals.current_hp_changed(hp)
+		if hp < 1:
+			GAME_OVER.emit()
+			
 
 @export
 var exp_growth_rate := 2
@@ -62,6 +66,7 @@ func _ready() -> void:
 	Signals.current_exp_changed.call_deferred(current_exp)
 	Signals.total_hp_changed.call_deferred(max_hp)
 	Signals.current_hp_changed.call_deferred(hp)
+	set_paddle_count(3)
 
 func exp_changed(by: int):
 	current_exp += by
@@ -123,8 +128,3 @@ func set_paddle_positions():
 		direction_deg += diff/4
 		for i in paddles:
 			i.direction = int(direction_deg + i.rotation_offset) % 360
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("test"):
-		paddle_count += 1
-		set_paddle_count(paddle_count)

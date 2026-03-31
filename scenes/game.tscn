@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dkr6kvwqa0wk7" path="res://scenes/player_hud.tscn" id="9_vtaks"]
 [ext_resource type="Script" uid="uid://ixb345cvm2g4" path="res://scripts/bgm_holder.gd" id="10_dinhu"]
 [ext_resource type="AudioStream" uid="uid://cvsdsrv0trvf" path="res://assets/music/Track1.wav" id="11_kvuet"]
-[ext_resource type="Script" uid="uid://dfsy5kwa2kluk" path="res://scripts/bgm_manager.gd" id="12_trtic"]
+[ext_resource type="AudioStream" uid="uid://cv351i363gbm1" path="res://assets/music/ost.wav" id="12_dinhu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -76,11 +76,10 @@ stream = ExtResource("11_kvuet")
 ease_in = 0.2
 metadata/_custom_type_script = "uid://ixb345cvm2g4"
 
-[node name="Node" type="Node" parent="." unique_id=2050186717]
-script = ExtResource("12_trtic")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=737366031]
+stream = ExtResource("12_dinhu")
+autoplay = true
 
-[node name="Player1" type="AudioStreamPlayer" parent="Node" unique_id=1179756712]
-
-[node name="Player2" type="AudioStreamPlayer" parent="Node" unique_id=1841216198]
-
+[connection signal="GAME_OVER" from="Player" to="." method="_on_player_game_over"]
+[connection signal="GAME_OVER" from="Player" to="PlayerHUD" method="_on_player_game_over"]
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="spawn_enemy"]

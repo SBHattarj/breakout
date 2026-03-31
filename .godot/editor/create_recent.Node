@@ -1,9 +1,10 @@
 AudioStreamPlayer
+Label
+ColorRect
+Control
 Node
 CenterContainer
-Label
 HBoxContainer
-Control
 TextureRect
 NinePatchRect
 VBoxContainer
@@ -11,5 +12,3 @@ MarginContainer
 PanelContainer
 Container
 CanvasLayer
-CollisionShape2D
-StaticBody2D

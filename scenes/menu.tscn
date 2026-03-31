@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c5elryp0kyb21"]
+
+[ext_resource type="Script" uid="uid://mve1evwdxmgf" path="res://scripts/menu.gd" id="1_yqeox"]
+[ext_resource type="AudioStream" uid="uid://bhgqlinmslo77" path="res://assets/music/menu.wav" id="2_vjb58"]
+
+[node name="Menu" type="Control" unique_id=1658845083]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yqeox")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1758983316]
+layout_mode = 0
+offset_left = -37.0
+offset_top = -30.0
+offset_right = 1188.0
+offset_bottom = 715.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1598448117]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 649.0
+theme_override_font_sizes/font_size = 80
+text = "unfinished breakout game
+made in a day
+
+press space to play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=588073922]
+stream = ExtResource("2_vjb58")
+autoplay = true
