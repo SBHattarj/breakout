@@ -1,0 +1,10 @@
+res://scenes/ball.tscn::0e2f8f6f6ee9e8dbb84e67f6f0bfadaf::1774962403::res://.godot/exported/133200997/export-d687370f64a28adc6cd2dc42f9ce6f46-ball.scn
+res://scenes/blue_tile.tscn::b473e551db1cc56b1af7feab06751f78::1774937421::res://.godot/exported/133200997/export-ddfcb085774dbc5cbd94f0d85c5e44e5-blue_tile.scn
+res://scenes/coin.tscn::eba4d2c58fa39177fafef1f4f112fafb::1774962403::res://.godot/exported/133200997/export-96b2131180b71dd158e52c5527d22dd4-coin.scn
+res://scenes/enemy1.tscn::5fa674a64366eb41014e3798d5384951::1774962403::res://.godot/exported/133200997/export-8d3b3d57916d53665ee70dc6a536dcb4-enemy1.scn
+res://scenes/game.tscn::723b27b92e900e03c1f85a3bf4a79955::1774982336::res://.godot/exported/133200997/export-c2a7af834e91ff64325daddf58e45dc0-game.scn
+res://scenes/menu.tscn::fc23b147fcc81d048992aaccbb5f4b0f::1774982215::res://.godot/exported/133200997/export-1ce5c86e8ca186dcaaeaa8726f1268db-menu.scn
+res://scenes/paddle.tscn::8c72caca2517dec4373fcaa8af309012::1774962403::res://.godot/exported/133200997/export-5b447501558eaa459fef7b7ad8250b2b-paddle.scn
+res://scenes/player.tscn::a6f09ddde9c20c3a6c202567b125fe43::1774980075::res://.godot/exported/133200997/export-234fb6894ec6226e856ab7f825500d3d-player.scn
+res://scenes/player_hud.tscn::d4e0ae2c35638d48b786f65906b74a96::1774980559::res://.godot/exported/133200997/export-0264a80e8434d58c57c6547ded463335-player_hud.scn
+res://scenes/ui_theme.tres::7d12d00cf1a820aee6b1381bb56d81fc::1774970895::res://.godot/exported/133200997/export-e191e764c476c9b5a3d3473f75bc9f1f-ui_theme.res

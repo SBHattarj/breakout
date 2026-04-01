@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 
 Signals="*uid://b7alk5glqf6q8"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
+window/stretch/scale_mode="integer"
+
 [input]
 
 right={
@@ -69,3 +75,4 @@ test={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+textures/vram_compression/import_etc2_astc=true
